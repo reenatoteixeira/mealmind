@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function NavMenuMobile(props) {
   return (
     <>
@@ -7,29 +9,29 @@ function NavMenuMobile(props) {
 
         <ul className={'space-y-3 px-2 py-4 text-xl'}>
           <li>
-            <a href={'/'} className={'transition-all hover:text-red-600'}>
+            <Link to={'/'} className={'transition-all hover:text-red-600'}>
               <i className={'uil uil-estate'}></i> Feed
-            </a>
+            </Link>
           </li>
           <li>
-            <a href={'/recipes'} className={'transition-all hover:text-red-600'}>
+            <Link to={'/recipes'} className={'transition-all hover:text-red-600'}>
               <i className={'uil uil-newspaper'}></i> My Recipes
-            </a>
+            </Link>
           </li>
         </ul>
 
         <hr className={'border border-gray-200'} />
 
         <div className={'flex items-center gap-2 text-center py-4'}>
-          <a href={'/login'}
-             className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
+          <Link to={'/login'}
+                className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
             Sign in
-          </a>
+          </Link>
 
-          <a href={'/register'}
-             className={'w-full text-xl px-4 py-2 border-2 border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
+          <Link to={'/register'}
+                className={'w-full text-xl px-4 py-2 border-2 border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
             Sign up
-          </a>
+          </Link>
         </div>
       </div>
     </>
