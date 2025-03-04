@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavMenu from './NavMenu.jsx';
 import NavMenuMobile from './NavMenuMobile.jsx';
 
@@ -25,7 +26,7 @@ function Header() {
               className={`fixed bg-stone-100 top-0 w-full z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'shadow-lg' : 'shadow-none'}`}>
         <div className={'container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
           <div className={'flex items-center justify-between h-16 md:gap-12'}>
-            <a href={'/'} className={'logo-font text-red-600 text-4xl font-bold'}>MealMind</a>
+            <Link to={'/'} className={'logo-font text-red-600 text-4xl font-bold'}>MealMind</Link>
 
             <div className={'flex items-center md:hidden'}>
               <button onClick={toggleMenu} type={'button'} className={'flex text-4xl'}>
