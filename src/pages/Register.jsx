@@ -1,9 +1,21 @@
+import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header.jsx';
 import comingSoonGIF from '../assets/images/coming-soon.gif';
 
 function Home() {
   return (
     <>
+      <Helmet>
+        <title>MealMind | Sign Up</title>
+        <meta name="description"
+              content="Sign up for MealMind and start sharing your favorite recipes, discover new ones, and join a growing community of food lovers." />
+        <meta property="og:title" content="MealMind | Sign Up" />
+        <meta property="og:description"
+              content="Sign up for MealMind and start sharing your favorite recipes, discover new ones, and join a growing community of food lovers." />
+        <meta property="og:url" content="https://mealmind.pages.dev/register" />
+        <link rel="canonical" href="https://mealmind.pages.dev/register" />
+      </Helmet>
+
       <Header />
 
       <section className={'min-h-screen bg-stone-100 text-stone-950 text-center flex items-center justify-center'}>
