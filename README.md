@@ -1,12 +1,62 @@
-# React + Vite
+# MealMind 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A smart and simple way to organize, share, and discover recipes.**
 
-Currently, two official plugins are available:
+## 📖 About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+MealMind is a recipe organizer application. The goal is to provide a seamless experience for users to create, store, and
+share their favorite recipes while exploring new dishes from the community.
 
-## Expanding the ESLint configuration
+### MVP Features:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ User registration and login  
+✅ Recipe creation and management  
+✅ Public recipe feed
+
+### Future Enhancements:
+
+🔹 Like system for public recipes  
+🔹 Comment system for community interaction  
+🔹 Image uploads for recipes  
+🔹 Enhanced search and filtering
+
+## 🚀 Tech Stack
+
+- **Frontend:** React + Vite, Tailwind CSS
+- **Backend:** Firebase Authentication, Firestore
+
+## 📥 Installation
+
+To run the project locally, follow these steps:
+
+1. **Clone the Repository**:
+   ```sh
+   git clone https://github.com/reenatoteixeira/mealmind
+   cd mealmind
+   ```
+2. **Install Dependencies**:
+   ```sh
+   npm install
+   ```
+3. **Run the Development Server**:
+   ```sh
+   npm run dev
+   ```
+
+## 🎯 How to Contribute
+
+We welcome contributions! To get involved:
+
+1. **Fork the Repository**
+2. **Create a Feature Branch**
+3. **Make Your Changes**
+4. **Commit and Push**
+5. **Open a Pull Request**
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+> ⭐️ Don't forget to leave a star if you find this useful!
