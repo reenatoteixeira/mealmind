@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header.jsx';
 import comingSoonGIF from '../assets/images/coming-soon.gif';
 
-function Home() {
+function MyRecipes() {
   return (
     <>
       <Helmet>
@@ -46,4 +46,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MyRecipes;
