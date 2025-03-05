@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useRegister from '../hooks/useRegister.js';
 import { useState } from 'react';
 
-function Home() {
+function Register() {
   const { register, loading, error } = useRegister();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -33,12 +33,12 @@ function Home() {
       <section className={'min-h-screen bg-stone-100 text-stone-800 flex items-center justify-center'}>
         <div className={'w-full p-4 container max-w-xl space-y-6 sm:mx-auto sm:px-6'}>
           <div>
-            <Link to={'/'} className={'px-4 py-2 text-red-600 rounded-lg transition-all hover:text-red-700'}>
+            <Link to={'/'} className={'px-4 py-2 text-red-600 rounded-lg transition-all hover:text-red-800 hover:underline'}>
               <i className={'uil uil-arrow-left'}></i> Back to home</Link>
           </div>
 
           <div className={'w-full space-y-6 sm:bg-white sm:px-6 sm:py-4 sm:rounded-2xl sm:shadow-lg'}>
-            <h1 className={'logo-font text-4xl text-red-500 font-bold'}>Create account</h1>
+            <h1 className={'logo-font text-4xl text-red-600 font-bold'}>Create account</h1>
 
             {error &&
               <div className={'px-4 py-2 rounded-md bg-red-100 text-red-800'}>
@@ -53,7 +53,7 @@ function Home() {
                   <input id={'first-name'} type={'text'} placeholder={'John'} required onChange={(e) => {
                     setFirstName(e.target.value);
                   }}
-                         className={'w-full px-3 py-2 bg-stone-300 text-stone-700 border-2 border-stone-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
+                         className={'w-full px-3 py-2 bg-stone-200 text-stone-600 border-2 border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
                 </div>
 
                 <div className={'w-full'}>
@@ -61,7 +61,7 @@ function Home() {
                   <input id={'last-name'} type={'text'} placeholder={'Doe'} required onChange={(e) => {
                     setLastName(e.target.value);
                   }}
-                         className={'w-full px-3 py-2 bg-stone-300 text-stone-700 border-2 border-stone-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
+                         className={'w-full px-3 py-2 bg-stone-200 text-stone-600 border-2 border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
                 </div>
               </div>
 
@@ -70,7 +70,7 @@ function Home() {
                 <input id={'email'} type={'email'} placeholder={'johndoe@example.com'} required onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                       className={'w-full px-3 py-2 bg-stone-300 text-stone-700 border-2 border-stone-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
+                       className={'w-full px-3 py-2 bg-stone-200 text-stone-600 border-2 border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
               </div>
 
               <div>
@@ -78,7 +78,7 @@ function Home() {
                 <input id={'password'} type={'password'} placeholder={'********'} required onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                       className={'w-full px-3 py-2 bg-stone-300 text-stone-700 border-2 border-stone-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
+                       className={'w-full px-3 py-2 bg-stone-200 text-stone-600 border-2 border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
 
                 <ul className={'bg-white p-2 rounded-md mt-2 text-stone-400 flex flex-col text-sm sm:bg-stone-100'}>
                   <li>Minimum 8 characters</li>
@@ -93,19 +93,19 @@ function Home() {
                 <input id={'password-check'} type={'password'} placeholder={'********'} required onChange={(e) => {
                   setPasswordCheck(e.target.value);
                 }}
-                       className={'w-full px-3 py-2 bg-stone-300 text-stone-700 border-2 border-stone-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
+                       className={'w-full px-3 py-2 bg-stone-200 text-stone-600 border-2 border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300'} />
               </div>
 
               <div className={'mt-4'}>
                 <button type={'submit'} disabled={loading}
-                        className={'w-full text-lg px-4 py-1 border-2 cursor-pointer border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
+                        className={'w-full transition-all cursor-pointer rounded-md bg-red-600 px-3.5 py-2.5 text-lg text-stone-100 shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
                   {loading ? 'Loading...' : 'Create account'}
                 </button>
               </div>
             </form>
 
             <p className={'text-center text-stone-400'}>Already have an account? {' '}
-              <Link to={'/login'} className={'text-red-500 underline hover:text-red-700'}>Sign in here</Link></p>
+              <Link to={'/login'} className={'text-red-600 underline hover:text-red-800'}>Sign in here</Link></p>
           </div>
         </div>
       </section>
@@ -113,4 +113,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Register;
