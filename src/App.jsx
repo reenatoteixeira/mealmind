@@ -5,6 +5,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import MyRecipes from './pages/MyRecipes.jsx';
 import NotFound from './pages/NotFound.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App() {
   return (
@@ -14,8 +15,11 @@ function App() {
           <Route path={'/'} element={<Home />}></Route>
           <Route path={'/login'} element={<Login />}></Route>
           <Route path={'/register'} element={<Register />}></Route>
-          <Route path={'/recipes'} element={<MyRecipes />}></Route>
           <Route path={'*'} element={<NotFound />}></Route>
+
+          <Route element={<ProtectedRoute />}>
+            <Route path={'/recipes'} element={<MyRecipes />}></Route>
+          </Route>
         </Routes>
       </Router>
     </HelmetProvider>
