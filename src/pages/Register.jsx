@@ -30,8 +30,8 @@ function Register() {
         <link rel="canonical" href="https://mealmind.pages.dev/register" />
       </Helmet>
 
-      <section className={'min-h-screen bg-stone-100 text-stone-800 flex items-center justify-center'}>
-        <div className={'w-full p-4 container max-w-xl space-y-6 sm:mx-auto sm:px-6'}>
+      <main className={'min-h-screen bg-stone-100 text-stone-800 flex items-center justify-center'}>
+        <section className={'w-full p-4 container max-w-xl space-y-6 sm:mx-auto sm:px-6'}>
           <div>
             <Link to={'/'} className={'px-4 py-2 text-red-600 rounded-lg transition-all hover:text-red-800 hover:underline'}>
               <i className={'uil uil-arrow-left'}></i> Back to home</Link>
@@ -107,8 +107,8 @@ function Register() {
             <p className={'text-center text-stone-400'}>Already have an account? {' '}
               <Link to={'/login'} className={'text-red-600 underline hover:text-red-800'}>Sign in here</Link></p>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 }
