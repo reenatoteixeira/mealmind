@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth';
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const user = useAuth();
+  const { user } = useAuth();
 
   function toggleMenu() {
     setMenuOpen(!isMenuOpen);
