@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 function useLogout() {
   const navigate = useNavigate();
 
-  function logout() {
-    AUTH_SERVICE.logout()
-      .then(() => {
-        navigate('/');
-      });
+  async function logout() {
+    navigate('/');
+    await AUTH_SERVICE.logout();
   }
 
   return logout;
