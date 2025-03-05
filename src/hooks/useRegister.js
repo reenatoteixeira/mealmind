@@ -13,6 +13,7 @@ function useRegister() {
 
     if (password !== passwordCheck) {
       setError('Passwords must match');
+      setLoading(false);
       return;
     }
 
