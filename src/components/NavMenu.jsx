@@ -1,30 +1,37 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useLogout from '../hooks/useLogout.js';
 
 function NavMenu(props) {
   const logout = useLogout();
+  const location = useLocation();
+
+  function isActive(route) {
+    return location.pathname === route;
+  }
 
   return (
     <>
       <div className={'hidden md:flex md:items-center md:justify-between md:w-full'}>
-        <ul className={'flex gap-6 text-lg'}>
-          <li>
-            <Link to={'/'} className={'transition-all hover:text-red-600 hover:underline'}>
-              Feed
-            </Link>
-          </li>
-          {props.user ? (
-            <>
+        {props.user ? (
+          <>
+            <ul className={'flex items-center gap-6 text-lg'}>
               <li>
-                <Link to={'/recipes'} className={'transition-all hover:text-red-600 hover:underline'}>
+                <Link to={'/'}
+                      className={`transition-all ${isActive('/') ? 'text-red-600' : 'hover:text-red-600 hover:underline'}`}>
+                  Feed
+                </Link>
+              </li>
+              <li>
+                <Link to={'/recipes'}
+                      className={`transition-all ${isActive('/recipes') ? 'text-red-600' : 'hover:text-red-600 hover:underline'}`}>
                   My Recipes
                 </Link>
               </li>
-            </>
-          ) : null}
-        </ul>
+            </ul>
+          </>
+        ) : null}
 
-        <div className={'flex items-center gap-4'}>
+        <div className={'flex items-center justify-end gap-4'}>
           {props.user ? (
             <>
               <p className={'text-lg'}>

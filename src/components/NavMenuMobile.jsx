@@ -1,8 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useLogout from '../hooks/useLogout.js';
 
 function NavMenuMobile(props) {
   const logout = useLogout();
+  const location = useLocation();
+
+  function isActive(route) {
+    return location.pathname === route;
+  }
 
   return (
     <>
@@ -10,22 +15,23 @@ function NavMenuMobile(props) {
         className={`overflow-hidden transition-all duration-300 ease-in-out ${props.isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} md:hidden `}>
         <hr className={'border border-gray-200'} />
 
-        <ul className={'space-y-3 px-2 py-4 text-xl'}>
-          <li>
-            <Link to={'/'} className={'transition-all hover:text-red-600 hover:underline'}>
-              <i className={'uil uil-estate'}></i> Feed
-            </Link>
-          </li>
-          {props.user ? (
-            <>
+        {props.user ? (
+          <>
+            <ul className={'space-y-3 px-2 py-4 text-xl'}>
               <li>
-                <Link to={'/recipes'} className={'transition-all hover:text-red-600'}>
+                <Link to={'/'} className={`transition-all ${isActive('/') ? 'text-red-600' : 'hover:text-red-600'}`}>
+                  <i className={'uil uil-estate'}></i> Feed
+                </Link>
+              </li>
+              <li>
+                <Link to={'/recipes'}
+                      className={`transition-all ${isActive('/recipes') ? 'text-red-600' : 'hover:text-red-600'}`}>
                   <i className={'uil uil-newspaper'}></i> My Recipes
                 </Link>
               </li>
-            </>
-          ) : null}
-        </ul>
+            </ul>
+          </>
+        ) : null}
 
         <hr className={'border border-gray-200'} />
 
@@ -33,7 +39,7 @@ function NavMenuMobile(props) {
           {props.user ? (
             <>
               <p className={'w-full text-xl'}>
-                Hi, {props.user.displayName}! </p>
+                Hi, {props.user.displayName.split(' ')[0]}! </p>
 
               <button onClick={logout}
                       className={'w-full transition-all cursor-pointer rounded-md px-3.5 py-1 text-lg text-red-600 border-2 border-red-600 shadow-xs hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
