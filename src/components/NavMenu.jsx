@@ -14,7 +14,7 @@ function NavMenu(props) {
       <div className={'hidden md:flex md:items-center md:justify-between md:w-full'}>
         {props.user ? (
           <>
-            <ul className={'flex items-center gap-6 text-lg'}>
+            <ul className={'w-full max-w-fit flex items-center gap-6 text-lg'}>
               <li>
                 <Link to={'/'}
                       className={`transition-all ${isActive('/') ? 'text-red-600' : 'hover:text-red-600 hover:underline'}`}>
@@ -31,10 +31,10 @@ function NavMenu(props) {
           </>
         ) : null}
 
-        <div className={'flex items-center justify-end gap-4'}>
+        <div className={'w-full flex items-center justify-end gap-4'}>
           {props.user ? (
             <>
-              <p className={'text-lg'}>
+              <p className={'text-lg truncate'}>
                 Hi, {props.user.displayName}! </p>
 
               <button onClick={logout}
