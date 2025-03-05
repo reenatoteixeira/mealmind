@@ -18,8 +18,8 @@ function Home() {
 
       <Header />
 
-      <section className={'min-h-screen bg-stone-100 text-stone-950 text-center flex items-center justify-center'}>
-        <div className={'container flex flex-col justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
+      <main className={'min-h-screen bg-stone-100 text-stone-950 text-center flex items-center justify-center'}>
+        <section className={'container flex flex-col justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
           <img src={comingSoonGIF} alt={'GIF showing an animated "Coming Soon" text.'} className={'w-1/2'} />
 
           <p className={'mb-4 text-stone-300'}>You're in the 'Home' page</p>
@@ -40,8 +40,8 @@ function Home() {
               GitHub
             </a>
           </p>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   );
 }
