@@ -12,7 +12,7 @@ function NavMenuMobile(props) {
 
         <ul className={'space-y-3 px-2 py-4 text-xl'}>
           <li>
-            <Link to={'/'} className={'transition-all hover:text-red-600'}>
+            <Link to={'/'} className={'transition-all hover:text-red-600 hover:underline'}>
               <i className={'uil uil-estate'}></i> Feed
             </Link>
           </li>
@@ -36,19 +36,19 @@ function NavMenuMobile(props) {
                 Hi, {props.user.displayName}! </p>
 
               <button onClick={logout}
-                      className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
+                      className={'w-full transition-all cursor-pointer rounded-md px-3.5 py-1 text-lg text-red-600 border-2 border-red-600 shadow-xs hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
                 <i className={'uil uil-signout'}></i> Log out
               </button>
             </>
           ) : (
             <>
               <Link to={'/login'}
-                    className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
+                    className={'w-full transition-all cursor-pointer rounded-md px-3.5 py-1 text-lg text-red-600 border-2 border-red-600 shadow-xs hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
                 Sign in
               </Link>
 
               <Link to={'/register'}
-                    className={'w-full text-xl px-4 py-2 border-2 border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
+                    className={'w-full transition-all cursor-pointer rounded-md bg-red-600 px-3.5 py-1 text-lg text-stone-100 border-2 border-red-600 shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
                 Sign up
               </Link>
             </>
