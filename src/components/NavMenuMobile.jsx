@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import useLogout from '../hooks/useLogout.js';
 
 function NavMenuMobile(props) {
+  const logout = useLogout();
+
   return (
     <>
       <div
@@ -13,25 +16,43 @@ function NavMenuMobile(props) {
               <i className={'uil uil-estate'}></i> Feed
             </Link>
           </li>
-          <li>
-            <Link to={'/recipes'} className={'transition-all hover:text-red-600'}>
-              <i className={'uil uil-newspaper'}></i> My Recipes
-            </Link>
-          </li>
+          {props.user ? (
+            <>
+              <li>
+                <Link to={'/recipes'} className={'transition-all hover:text-red-600'}>
+                  <i className={'uil uil-newspaper'}></i> My Recipes
+                </Link>
+              </li>
+            </>
+          ) : null}
         </ul>
 
         <hr className={'border border-gray-200'} />
 
         <div className={'flex items-center gap-2 text-center py-4'}>
-          <Link to={'/login'}
-                className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
-            Sign in
-          </Link>
+          {props.user ? (
+            <>
+              <p className={'w-full text-xl'}>
+                Hi, {props.user.displayName}! </p>
 
-          <Link to={'/register'}
-                className={'w-full text-xl px-4 py-2 border-2 border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
-            Sign up
-          </Link>
+              <button onClick={logout}
+                      className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
+                <i className={'uil uil-signout'}></i> Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to={'/login'}
+                    className={'w-full text-xl px-4 py-2 border-2 border-red-600 text-red-600 rounded-lg transition-all hover:bg-red-100'}>
+                Sign in
+              </Link>
+
+              <Link to={'/register'}
+                    className={'w-full text-xl px-4 py-2 border-2 border-red-600 bg-red-600 text-stone-100 rounded-lg transition-all hover:bg-red-500'}>
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

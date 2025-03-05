@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavMenu from './NavMenu.jsx';
 import NavMenuMobile from './NavMenuMobile.jsx';
+import useAuth from '../hooks/useAuth';
 
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const user = useAuth();
 
   function toggleMenu() {
     setMenuOpen(!isMenuOpen);
@@ -39,10 +41,10 @@ function Header() {
               </button>
             </div>
 
-            <NavMenu />
+            <NavMenu user={user} />
           </div>
 
-          <NavMenuMobile isMenuOpen={isMenuOpen} />
+          <NavMenuMobile isMenuOpen={isMenuOpen} user={user} />
         </div>
       </header>
     </>
