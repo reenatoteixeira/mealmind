@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { AUTH_SERVICE } from '../services/AuthService.js';
+import { DATABASE_SERVICE } from '../services/DatabaseService.js';
 import { useNavigate } from 'react-router-dom';
+import { serverTimestamp } from 'firebase/firestore';
 
 function useRegister() {
   const [loading, setLoading] = useState(false);
@@ -18,11 +20,39 @@ function useRegister() {
     }
 
     try {
-      const USER_CREDENTIAL = await AUTH_SERVICE.register(email, password, firstName, lastName);
+      const USER_CREDENTIAL = await AUTH_SERVICE.register(email, password, firstName, lastName),
+        user = USER_CREDENTIAL.user;
+
+      await DATABASE_SERVICE.setDocument('users', user.uid, {
+        userUid: user.uid,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        displayName: user.displayName,
+        profilePicture: null,
+        registeredAt: serverTimestamp(),
+        lastUpdate: serverTimestamp(),
+        createdRecipes: {
+          total: 0,
+          items: [],
+        },
+        likedRecipes: {
+          total: 0,
+          items: [],
+        },
+        comments: {
+          total: 0,
+          items: [],
+        },
+      });
+
       navigate('/');
-      return USER_CREDENTIAL.user;
+      return user;
+
     } catch (error) {
+      console.error('Error during registration', error);
       setError(AUTH_SERVICE.getAuthErrorMessage(error.code));
+
     } finally {
       setLoading(false);
     }

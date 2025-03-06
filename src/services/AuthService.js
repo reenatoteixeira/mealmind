@@ -7,14 +7,14 @@ class AuthService {
   }
 
   async register(email, password, firstName, lastName) {
-    return createUserWithEmailAndPassword(this.auth, email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        return updateProfile(user, { displayName: `${firstName} ${lastName}` })
-          .then(() => {
-            return user;
-          });
-      });
+    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password),
+      user = userCredential.user;
+
+    await updateProfile(user, {
+      displayName: `${firstName} ${lastName}`,
+    });
+
+    return userCredential;
   }
 
   async login(email, password) {
@@ -39,7 +39,7 @@ class AuthService {
       'auth/password-does-not-meet-requirements': 'Your password does not meet the security requirements. Please choose a stronger password.',
     };
 
-    return authErrorMessages[errorCode] || 'Unknown error. Please try again later.';
+    return authErrorMessages[errorCode] || errorCode;
   }
 }
 
