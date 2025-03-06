@@ -1,4 +1,4 @@
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import { getDocs, collection, query, where, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 class DatabaseService {
@@ -20,6 +20,10 @@ class DatabaseService {
       .then((querySnapshot) => {
         return querySnapshot.docs.map(doc => (doc.data()));
       });
+  }
+
+  async setDocument(collectionName, documentId, documentData) {
+    await setDoc(doc(this.db, collectionName, documentId), documentData);
   }
 }
 
