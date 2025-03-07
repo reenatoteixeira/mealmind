@@ -1,4 +1,4 @@
-import { getDocs, collection, query, where, doc, setDoc } from 'firebase/firestore';
+import { getDocs, getDoc, collection, query, where, doc, setDoc } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 class DatabaseService {
@@ -20,6 +20,16 @@ class DatabaseService {
       .then((querySnapshot) => {
         return querySnapshot.docs.map(doc => (doc.data()));
       });
+  }
+
+  async getDocumentsById(collectionName, documentId) {
+    const docSnap = await getDoc(doc(this.db, collectionName, documentId));
+
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      throw new Error('No such document');
+    }
   }
 
   async setDocument(collectionName, documentId, documentData) {
