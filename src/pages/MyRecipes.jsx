@@ -1,8 +1,42 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header.jsx';
-import comingSoonGIF from '../assets/images/coming-soon.gif';
+import { useEffect, useState } from 'react';
+import { DATABASE_SERVICE } from '../services/DatabaseService.js';
+import { AUTH_SERVICE } from '../services/AuthService.js';
+import RecipeCard from '../components/RecipeCard.jsx';
+import PlaceholderRecipeCard from '../components/PlaceholderRecipeCard.jsx';
 
 function MyRecipes() {
+  const [recipes, setRecipes] = useState([]);
+  const [users, setUsers] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRecipes() {
+      const user = AUTH_SERVICE.getCurrentUser(),
+        recipes = await DATABASE_SERVICE.getDocumentsByAttribute('recipes', 'userUid', '==', user.uid);
+
+      setRecipes(recipes);
+
+      const userPromises = recipes.map((recipe) => {
+          return DATABASE_SERVICE.getDocumentsById('users', recipe.userUid);
+        }),
+        userData = await Promise.all(userPromises),
+        usersMap = userData.reduce((acc, user, index) => {
+          if (user) {
+            acc[recipes[index].userUid] = user;
+          }
+
+          return acc;
+        }, {});
+
+      setUsers(usersMap);
+      setLoading(false);
+    }
+
+    fetchRecipes();
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -18,30 +52,42 @@ function MyRecipes() {
 
       <Header />
 
-      <main className={'min-h-screen bg-stone-100 text-stone-950 text-center flex items-center justify-center'}>
-        <section className={'container flex flex-col justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
-          <img src={comingSoonGIF} alt={'GIF showing an animated "Coming Soon" text.'} className={'w-1/2'} />
+      <main className={'pt-30 text-stone-900 flex items-center justify-center'}>
+        <section className={'container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}>
 
-          <p className={'mb-4 text-stone-300'}>You're in the 'My Recipes' page</p>
+          <div className={'flex flex-col justify-between gap-6 sm:flex-row sm:gap-20 sm:items-center'}>
+            <div className={'w-fit'}>
+              <h1 className={'text-2xl font-bold'}>Manage your recipes</h1>
+              <p className={'text-stone-600'}>Create, view, and manage your personal recipes. Edit recipe details,
+                change their visibility, and keep
+                track of your favorite dishes.</p>
+            </div>
 
-          <h1 className={'text-xl font-bold text-red-600 md:text-3xl'}>
-            Your Smart Recipe Organizer is Cooking! </h1>
+            <button disabled
+                    className={'disabled:opacity-50 disabled:hover:bg-red-600 disabled:cursor-default h-fit min-w-fit transition-all cursor-pointer rounded-md bg-red-600 px-3.5 py-3 text-lg text-stone-100 border-2 border-red-600 shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
+              <i className={'uil uil-plus'}></i> Add recipe
+            </button>
+          </div>
 
-          <p className={'opacity-75 md:text-xl'}>
-            We’re crafting a smarter way to save, share, and discover recipes —
-            tailored just for you!</p>
-
-          <p className={'my-8 md:text-xl'}>
-            Stay tuned! MealMind is coming soon with delicious features. </p>
-
-          <p className={'opacity-50 text-sm md:text-lg'}>
-            In the meantime, follow updates on our {' '}
-            <a href={'https://github.com/reenatoteixeira/mealmind'} className={'text-red-600 underline'}>
-              GitHub
-            </a>
-          </p>
+          <ul className={'flex py-10 flex-col gap-4'}>
+            {loading ? (
+              <>
+                <PlaceholderRecipeCard />
+                <PlaceholderRecipeCard />
+              </>
+            ) : recipes.length > 0 ? (
+              recipes.map((recipe, index) => (
+                <RecipeCard key={index} recipe={recipe} users={users} />
+              ))
+            ) : (
+              <li
+                className={'h-80 flex items-center justify-center rounded-2xl border-2 border-dashed border-stone-400 text-center text-lg text-stone-500'}>
+                You haven't added any recipes yet</li>
+            )}
+          </ul>
         </section>
       </main>
+
     </>
   );
 }
