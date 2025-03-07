@@ -1,26 +1,30 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
-import MyRecipes from './pages/MyRecipes.jsx';
-import NotFound from './pages/NotFound.jsx';
-import ProtectedRoute from './components/ProtectedRoute.jsx';
+import { lazy, Suspense } from 'react';
+
+const Home = lazy(() => import('./pages/Home')),
+  Login = lazy(() => import('./pages/Login')),
+  Register = lazy(() => import('./pages/Register')),
+  MyRecipes = lazy(() => import('./pages/MyRecipes')),
+  NotFound = lazy(() => import('./pages/NotFound')),
+  ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
-        <Routes>
-          <Route path={'/'} element={<Home />}></Route>
-          <Route path={'/login'} element={<Login />}></Route>
-          <Route path={'/register'} element={<Register />}></Route>
-          <Route path={'*'} element={<NotFound />}></Route>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path={'/'} element={<Home />}></Route>
+            <Route path={'/login'} element={<Login />}></Route>
+            <Route path={'/register'} element={<Register />}></Route>
+            <Route path={'*'} element={<NotFound />}></Route>
 
-          <Route element={<ProtectedRoute />}>
-            <Route path={'/recipes'} element={<MyRecipes />}></Route>
-          </Route>
-        </Routes>
+            <Route element={<ProtectedRoute />}>
+              <Route path={'/recipes'} element={<MyRecipes />}></Route>
+            </Route>
+          </Routes>
+        </Suspense>
       </Router>
     </HelmetProvider>
   );
