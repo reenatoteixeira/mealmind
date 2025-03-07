@@ -28,6 +28,10 @@ class AuthService {
     return signOut(this.auth);
   }
 
+  getCurrentUser() {
+    return this.auth.currentUser;
+  }
+
   getAuthErrorMessage(errorCode) {
     const authErrorMessages = {
       'auth/email-already-in-use': 'This email is already in use. Try logging in or use a different email.',
