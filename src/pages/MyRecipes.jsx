@@ -5,6 +5,7 @@ import { DATABASE_SERVICE } from '../services/DatabaseService.js';
 import { AUTH_SERVICE } from '../services/AuthService.js';
 import RecipeCard from '../components/RecipeCard.jsx';
 import PlaceholderRecipeCard from '../components/PlaceholderRecipeCard.jsx';
+import { Link } from 'react-router-dom';
 
 function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -63,10 +64,10 @@ function MyRecipes() {
                 track of your favorite dishes.</p>
             </div>
 
-            <button disabled
-                    className={'disabled:opacity-50 disabled:hover:bg-red-600 disabled:cursor-default h-fit min-w-fit transition-all cursor-pointer rounded-md bg-red-600 px-3.5 py-3 text-lg text-stone-100 border-2 border-red-600 shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
+            <Link to={'/new-recipe'}
+                  className={'h-fit min-w-fit transition-all cursor-pointer rounded-md bg-red-600 px-3.5 py-3 text-lg text-stone-100 border-2 border-red-600 shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600'}>
               <i className={'uil uil-plus'}></i> Add recipe
-            </button>
+            </Link>
           </div>
 
           <ul className={'flex py-10 flex-col gap-4'}>

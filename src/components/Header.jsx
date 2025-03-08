@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavMenu from './NavMenu.jsx';
 import NavMenuMobile from './NavMenuMobile.jsx';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/auth/useAuth.js';
 
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);

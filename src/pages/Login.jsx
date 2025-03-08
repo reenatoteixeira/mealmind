@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import useLogin from '../hooks/useLogin.js';
+import useLogin from '../hooks/auth/useLogin.js';
 import { useState } from 'react';
 
 function Login() {

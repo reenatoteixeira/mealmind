@@ -8,8 +8,8 @@ function RecipeCard(props) {
   return (
     <>
       <li>
-        <Link to={`/recipes/${recipe.recipeId}`}
-              className={'flex flex-col min-h-52 bg-white border-1 border-stone-200 shadow-md shadow-stone-300 rounded-xl transition duration-500 sm:flex-row hover:scale-103'}>
+        <Link to={`/recipes/${recipe.id}`}
+              className={'flex flex-col min-h-60 bg-white border-1 border-stone-200 shadow-md shadow-stone-300 rounded-xl transition duration-500 sm:flex-row hover:scale-103'}>
           <div style={{ backgroundImage: `url(${recipe.coverImg})` }}
                className={`bg-center bg-no-repeat bg-cover w-full h-50 rounded-t-lg bg-stone-300 sm:h-auto sm:max-w-3xs sm:rounded-l-lg sm:rounded-t-none`}></div>
 
@@ -44,7 +44,7 @@ function RecipeCard(props) {
               </div>
             </div>
 
-            <p className={'text-stone-700 max-h-32 line-clamp-4 overflow-hidden'}>{recipe.description}</p>
+            <p className={'text-stone-700 max-h-32 line-clamp-4 overflow-hidden h-full'}>{recipe.description}</p>
 
             <div className={'flex items-center gap-4 text-md text-stone-500 sm:hidden'}>
               <div>

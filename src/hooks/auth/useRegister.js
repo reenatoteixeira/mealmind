@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { AUTH_SERVICE } from '../services/AuthService.js';
-import { DATABASE_SERVICE } from '../services/DatabaseService.js';
+import { AUTH_SERVICE } from '../../services/AuthService.js';
+import { DATABASE_SERVICE } from '../../services/DatabaseService.js';
 import { useNavigate } from 'react-router-dom';
 import { serverTimestamp } from 'firebase/firestore';
 
@@ -23,7 +23,7 @@ function useRegister() {
       const USER_CREDENTIAL = await AUTH_SERVICE.register(email, password, firstName, lastName),
         user = USER_CREDENTIAL.user;
 
-      await DATABASE_SERVICE.setDocument('users', user.uid, {
+      await DATABASE_SERVICE.setDocumentWithId('users', user.uid, {
         userUid: user.uid,
         email: email,
         firstName: firstName,

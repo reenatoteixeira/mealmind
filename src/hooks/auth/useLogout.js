@@ -1,4 +1,4 @@
-import { AUTH_SERVICE } from '../services/AuthService.js';
+import { AUTH_SERVICE } from '../../services/AuthService.js';
 import { useNavigate } from 'react-router-dom';
 
 function useLogout() {

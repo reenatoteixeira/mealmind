@@ -1,4 +1,4 @@
-import { getDocs, getDoc, collection, query, where, doc, setDoc } from 'firebase/firestore';
+import { getDocs, getDoc, updateDoc, collection, deleteDoc, query, where, doc, setDoc } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 class DatabaseService {
@@ -32,8 +32,23 @@ class DatabaseService {
     }
   }
 
-  async setDocument(collectionName, documentId, documentData) {
+  async setDocumentWithId(collectionName, documentId, documentData) {
     await setDoc(doc(this.db, collectionName, documentId), documentData);
+  }
+
+  async setDocument(collectionName, documentData) {
+    const docRef = doc(collection(this.db, collectionName));
+    await setDoc(docRef, { id: docRef.id, ...documentData });
+  }
+
+  async updateDocument(collectionName, documentId, documentData) {
+    const docRef = doc(this.db, collectionName, documentId);
+    await updateDoc(docRef, documentData);
+  }
+
+  async deleteDocument(collectionName, documentId) {
+    const docRef = doc(this.db, collectionName, documentId);
+    await deleteDoc(docRef);
   }
 }
 

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import useLogout from '../hooks/useLogout.js';
+import useLogout from '../hooks/auth/useLogout.js';
 
 function NavMenu(props) {
   const logout = useLogout();
