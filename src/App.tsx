@@ -1,12 +1,11 @@
-import ComingSoon from "./components/pages/ComingSoon.tsx";
+import ComingSoon from './components/pages/ComingSoon.tsx';
 
 function App() {
-
   return (
     <>
-      <ComingSoon/>
+      <ComingSoon />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

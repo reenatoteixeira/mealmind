@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --ext .ts, .tsx --fix",
+    "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{ts, tsx}\""
+    "format": "npx prettier . --write"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
