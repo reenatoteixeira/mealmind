@@ -1,10 +1,13 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ComingSoon from './components/pages/ComingSoon.tsx';
 
 function App() {
   return (
-    <>
-      <ComingSoon />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ComingSoon />} />
+      </Routes>
+    </Router>
   );
 }
 

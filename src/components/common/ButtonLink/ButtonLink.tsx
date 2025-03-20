@@ -1,27 +1,28 @@
-import { ButtonProps } from './Button.types.ts';
+import { ButtonLinkProps } from './ButtonLink.types.ts';
 import getButtonStyle from '../../styles/Button.styles.ts';
+import { Link } from 'react-router-dom';
 
-function Button({
+function ButtonLink({
   label,
   ariaLabel,
+  href = '/',
   size = 'md',
   style = 'primary',
   icon: Icon,
   iconPosition = 'left',
   state = 'enabled',
-  onClick,
-}: ButtonProps) {
+}: ButtonLinkProps) {
   const { buttonStyle, iconSize } = getButtonStyle(size, style, state, iconPosition);
 
   return (
-    <button onClick={onClick} className={buttonStyle} disabled={state === 'disabled'}>
+    <Link to={href} className={buttonStyle}>
       <span className="sr-only">{ariaLabel}</span>
       {Icon && iconPosition === 'left' && <Icon size={iconSize} data-testid="icon" />}
       {iconPosition != 'alone' && label}
       {Icon && iconPosition === 'right' && <Icon size={iconSize} data-testid="icon" />}
       {Icon && iconPosition === 'alone' && <Icon size={iconSize} data-testid="icon" />}
-    </button>
+    </Link>
   );
 }
 
-export default Button;
+export default ButtonLink;

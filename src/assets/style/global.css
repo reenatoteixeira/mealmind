@@ -1,1 +1,9 @@
 @import 'tailwindcss';
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo-font {
+  font-family: 'Playwrite US Modern', sans-serif;
+}
