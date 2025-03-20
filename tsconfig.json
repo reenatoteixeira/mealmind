@@ -11,10 +11,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "dom",
-      "es2015"
-    ],
+    "lib": ["dom", "es2015"],
     "allowJs": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
@@ -31,7 +28,5 @@
     "noFallthroughCasesInSwitch": true,
     "allowImportingTsExtensions": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

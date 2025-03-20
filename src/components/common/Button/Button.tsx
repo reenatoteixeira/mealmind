@@ -2,16 +2,16 @@ import { ButtonProps } from './Button.types.ts';
 import clsx from 'clsx';
 
 function Button({
-                  label,
-                  size = 'md',
-                  style = 'primary',
-                  icon: Icon,
-                  iconPosition = 'left',
-                  state = 'enabled',
-                  onClick,
-                }: ButtonProps) {
-
-  const baseClasses = 'inline-flex items-center gap-1 rounded-xl font-semibold shadow-xs border-2 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500',
+  label,
+  size = 'md',
+  style = 'primary',
+  icon: Icon,
+  iconPosition = 'left',
+  state = 'enabled',
+  onClick,
+}: ButtonProps) {
+  const baseClasses =
+      'inline-flex items-center gap-1 rounded-xl font-semibold shadow-xs border-2 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500',
     sizeClasses = {
       sm: 'text-sm px-3 py-2',
       md: 'text-md px-4 py-2',
